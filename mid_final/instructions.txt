@@ -1,0 +1,112 @@
+Project structure:
+
+mult_ai/
+├── data/
+│   ├── csd/
+│   └── processed/
+├── models/
+├── utils/
+├── requirements.txt
+├── config.py
+├── prepare_mosei_multilabel_from_csd.py
+├── train.py
+└── evaluate.py
+
+===========================
+==========STEPS============
+===========================
+
+1. Install Python 3.10
+
+2. Create  Virtual Environment
+
+python -m venv mult_ai
+mult_ai\Scripts\activate
+
+3. Install all dependencies
+
+pip install -r requirements.txt
+
+
+4. Put CMU-MOSEI .csd files
+
+Place inside this:
+
+data/csd/
+
+Required files inside data/csd/:
+
+CMU_MOSEI_Labels.csd
+CMU_MOSEI_TimestampedWordVectors.csd
+CMU_MOSEI_COVAREP.csd
+CMU_MOSEI_VisualOpenFace2.csd
+
+
+5. Prepare .csd dataset
+
+Run:
+
+python prepare_mosei_multilabel_from_csd.py --csd_dir data/csd --out_dir data/processed
+
+This command generates:
+
+data/processed/train.csv
+data/processed/val.csv
+data/processed/test.csv
+data/processed/text_features.pkl
+data/processed/audio_features.pkl
+data/processed/visual_features.pkl
+data/processed/feature_dims.json
+
+
+6. Update config.py:
+
+open:
+
+data/processed/feature_dims.json
+
+content:
+
+{
+  "TEXT_DIM": 300,
+  "AUDIO_DIM": 74,
+  "VISUAL_DIM": 35
+}
+
+
+Then update config.py:
+
+NUM_CLASSES = 6
+
+TEXT_DIM = 300
+AUDIO_DIM = 74
+VISUAL_DIM = 35
+
+TEXT_HIDDEN = 256
+AUDIO_HIDDEN = 128
+VISUAL_HIDDEN = 128
+FUSION_HIDDEN = 256
+
+DROPOUT = 0.3
+BATCH_SIZE = 16
+LR = 1e-4
+EPOCHS = 20
+
+EMOTION_NAMES = [
+    "happy",
+    "sad",
+    "anger",
+    "surprise",
+    "disgust",
+    "fear"
+]
+
+*note; Use the actual dimensions from your feature_dims.json.
+
+7. Train the model
+
+python train.py
+
+8. Evaluate the model
+
+python evaluate.py

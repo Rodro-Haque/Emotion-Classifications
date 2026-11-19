@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+mult_ai/
+
+# Environment / secrets
+.env
+.env.*
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Datasets, extracted features, and model checkpoints
+*.csd
+*.pkl
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.ckpt
+*.onnx
+mid_final/data/csd/*
+!mid_final/data/csd/.gitkeep
+mid_final/data/processed/*
+!mid_final/data/processed/.gitkeep
+MultimodalAI_mid/data/processed/*
+!MultimodalAI_mid/data/processed/.gitkeep

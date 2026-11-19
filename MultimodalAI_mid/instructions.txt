@@ -1,0 +1,41 @@
+Step 1:
+
+Prepare labels.csv
+
+python build_metadata.py
+
+Step 2:
+
+Split data
+
+python scripts/split_data.py
+
+Step 3:
+
+Extract text features
+
+python scripts/extract_text_features.py
+
+Step 4:
+
+Extract audio features
+
+python scripts/extract_audio_features.py
+
+Step 5:
+
+Extract visual features
+
+python scripts/extract_visual_features.py
+
+Step 6:
+
+Train early fusion model
+
+python train.py
+
+Step 7:
+
+Evaluate on test set
+
+python evaluate.py
