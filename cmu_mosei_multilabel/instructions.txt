@@ -1,6 +1,6 @@
 Project structure:
 
-mult_ai/
+cmu_mosei_multilabel/
 ├── data/
 │   ├── csd/
 │   └── processed/
@@ -20,8 +20,8 @@ mult_ai/
 
 2. Create  Virtual Environment
 
-python -m venv mult_ai
-mult_ai\Scripts\activate
+python -m venv .venv
+.venv\Scripts\activate
 
 3. Install all dependencies
 

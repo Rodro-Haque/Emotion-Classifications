@@ -46,9 +46,9 @@ Thumbs.db
 *.pth
 *.ckpt
 *.onnx
-mid_final/data/csd/*
-!mid_final/data/csd/.gitkeep
-mid_final/data/processed/*
-!mid_final/data/processed/.gitkeep
-MultimodalAI_mid/data/processed/*
-!MultimodalAI_mid/data/processed/.gitkeep
+cmu_mosei_multilabel/data/csd/*
+!cmu_mosei_multilabel/data/csd/.gitkeep
+cmu_mosei_multilabel/data/processed/*
+!cmu_mosei_multilabel/data/processed/.gitkeep
+multimodal_early_fusion/data/processed/*
+!multimodal_early_fusion/data/processed/.gitkeep

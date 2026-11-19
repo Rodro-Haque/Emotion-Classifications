@@ -1,55 +1,56 @@
 # Multimodal Emotion Classification
 
-A multimodal emotion classification project combining text, audio, and visual features using neural encoders and fusion models in PyTorch.
+A PyTorch multimodal emotion classification project combining text, audio, and visual modalities through dedicated encoders and an early-fusion neural architecture.
 
-## Repository Contents
+## Project Structure
 
-- **`mid_final/`** — Multi-label multimodal emotion classification pipeline using the CMU-MOSEI dataset (6 emotion classes: `happy`, `sad`, `anger`, `surprise`, `disgust`, `fear`).
-- **`MultimodalAI_mid/`** — Feature-extraction and early-fusion multimodal pipeline (7 classes; DistilBERT text, MFCC audio, and ResNet18 visual features).
+- **`cmu_mosei_multilabel/`** — Multi-label multimodal emotion classification pipeline on the CMU-MOSEI dataset (6 emotion classes: `happy`, `sad`, `anger`, `surprise`, `disgust`, `fear`).
+- **`multimodal_early_fusion/`** — Feature-extraction and early-fusion classification pipeline (7 classes using DistilBERT text, MFCC audio, and ResNet18 visual features).
 - **`Multimodal Emotion Classification.pptx`** — Project presentation slides.
 
 ---
 
-## `mid_final/` Setup & Usage (CMU-MOSEI Multi-Label)
+## 1. CMU-MOSEI Multi-Label Pipeline (`cmu_mosei_multilabel/`)
 
-1. **Create a Python 3.10 virtual environment and install dependencies:**
-   ```bash
-   cd mid_final
-   python -m venv mult_ai
-   mult_ai\Scripts\activate
-   pip install -r requirements.txt
-   ```
+### Setup
+```bash
+cd cmu_mosei_multilabel
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
 
-2. **Add CMU-MOSEI `.csd` dataset files** into `mid_final/data/csd/`:
-   - `CMU_MOSEI_Labels.csd`
-   - `CMU_MOSEI_TimestampedWordVectors.csd`
-   - `CMU_MOSEI_COVAREP.csd`
-   - `CMU_MOSEI_VisualOpenFace2.csd`
+### Dataset Preparation
+Place the CMU-MOSEI `.csd` files inside `cmu_mosei_multilabel/data/csd/`:
+- `CMU_MOSEI_Labels.csd`
+- `CMU_MOSEI_TimestampedWordVectors.csd`
+- `CMU_MOSEI_COVAREP.csd`
+- `CMU_MOSEI_VisualOpenFace2.csd`
 
-3. **Prepare the dataset:**
-   ```bash
-   python prepare_mosei_multilabel_from_csd.py --csd_dir data/csd --out_dir data/processed
-   ```
+Extract aligned features and train/validation/test splits:
+```bash
+python prepare_mosei_multilabel_from_csd.py --csd_dir data/csd --out_dir data/processed
+```
 
-4. **Update `mid_final/config.py`** using the dimensions generated in `data/processed/feature_dims.json` if needed, then train and evaluate:
-   ```bash
-   python train.py
-   python evaluate.py
-   ```
+Update `TEXT_DIM`, `AUDIO_DIM`, and `VISUAL_DIM` in `cmu_mosei_multilabel/config.py` to match the generated `data/processed/feature_dims.json` if needed, then train and evaluate:
+```bash
+python train.py
+python evaluate.py
+```
 
 ---
 
-## `MultimodalAI_mid/` Setup & Usage
+## 2. Early-Fusion Feature Extraction Pipeline (`multimodal_early_fusion/`)
 
-1. Download the dataset referenced in `MultimodalAI_mid/data/source.txt` into `MultimodalAI_mid/data/` (keeping the `data/processed/` directory intact).
-2. Run the pipeline steps described in `MultimodalAI_mid/instructions.txt`:
-   ```bash
-   cd MultimodalAI_mid
-   python build_metadata.py
-   python split_data.py
-   python scripts/extract_text_features.py
-   python scripts/extract_audio_features.py
-   python scripts/extract_visual_features.py
-   python train.py
-   python evaluate.py
-   ```
+1. Download the dataset referenced in `multimodal_early_fusion/data/source.txt` into `multimodal_early_fusion/data/` (keeping `data/processed/` intact).
+2. Run metadata creation, feature extraction, training, and evaluation:
+```bash
+cd multimodal_early_fusion
+python build_metadata.py
+python split_data.py
+python scripts/extract_text_features.py
+python scripts/extract_audio_features.py
+python scripts/extract_visual_features.py
+python train.py
+python evaluate.py
+```
