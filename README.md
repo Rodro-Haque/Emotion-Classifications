@@ -6,7 +6,31 @@ A PyTorch multimodal emotion classification project combining text, audio, and v
 
 - **`cmu_mosei_multilabel/`** — Multi-label multimodal emotion classification pipeline on the CMU-MOSEI dataset (6 emotion classes: `happy`, `sad`, `anger`, `surprise`, `disgust`, `fear`).
 - **`multimodal_early_fusion/`** — Feature-extraction and early-fusion classification pipeline (7 classes using DistilBERT text, MFCC audio, and ResNet18 visual features).
+- **`figures/`** — Overview diagram, model architecture diagram, and CMU-MOSEI evaluation plots.
 - **`Multimodal Emotion Classification.pptx`** — Project presentation slides.
+
+---
+
+## Overview & Architecture
+
+![Multimodal Emotion Recognition Overview](figures/multimodal_overview.png)
+
+![Early Fusion Model Architecture](figures/architecture.png)
+
+---
+
+## Evaluation Results (`cmu_mosei_multilabel/`, CMU-MOSEI)
+
+![CMU-MOSEI Test Evaluation Results](figures/evaluation_results.png)
+
+| Metric | Value |
+|---|---|
+| **Test Loss** | `0.5662` |
+| **Micro F1** | `0.6987` |
+| **Macro F1** | `0.6731` |
+| **Weighted F1** | `0.7076` |
+| **Micro Precision** | `0.6825` |
+| **Micro Recall** | `0.7156` |
 
 ---
 
